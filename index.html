@@ -24,7 +24,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            padding: 40px; 
+            padding: 15px; 
             text-align: right;
             background: linear-gradient(45deg, #222, #444);
             border-radius: 5px;
@@ -70,6 +70,10 @@
             cursor: pointer;
             border: none;
         }
+        .vip-ticket-btn, .regular-ticket-btn{
+            text-decoration: none;
+            color: white;
+        }
 
         @keyframes gradientAnimation {
             0% {
@@ -80,6 +84,13 @@
             }
             100% {
                 background-position: 0% 50%;
+            }
+        }
+
+            /* Media query for responsive layout */
+            @media only screen and (max-width: 768px) {
+            .ticket {
+                width: calc(100% - 20px); /* One section in a row on smaller screens */
             }
         }
     </style>
@@ -109,14 +120,14 @@
             <h2>VIP Ticket</h2>
             <p>VIP ticket for individuals with a great view</p>
             <p>N30,000</p>
-            <button class="get-tickets-btn">GET TICKETS</button>
+            <button class="get-tickets-btn vip-ticket-btn"><a href="registeration.html" class="vip-ticket-btn">GET TICKETS</a></button>
         </div>
 
         <div class="ticket regular-ticket">
             <h2>Regular Ticket</h2>
             <p>Regular ticket for individuals with a great view</p>
             <p>N10,000.00</p>
-            <button class="get-tickets-btn">GET TICKETS</button>
+            <button class="get-tickets-btn regular-ticket-btn"><a href="registeration.html" class="regular-ticket-btn">GET TICKETS</a></button>
         </div>
     </section>
 

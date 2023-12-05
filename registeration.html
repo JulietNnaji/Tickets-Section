@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #777474;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        hr {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Registration Form</h1>
+        <hr>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address">
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+        <label for="tickets">Number of Tickets:</label>
+        <select id="tickets" name="tickets">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <!-- Additional fields for multiple tickets -->
+        <div id="ticketDetails" style="display: none;">
+            <label>Ticket Holder Details:</label>
+            <div id="ticketFields"></div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        document.getElementById("tickets").addEventListener("change", function () {
+            var ticketDetails = document.getElementById("ticketDetails");
+            var ticketFields = document.getElementById("ticketFields");
+            ticketFields.innerHTML = "";
+
+            if (this.value > 1) {
+                ticketDetails.style.display = "block";
+                for (var i = 1; i <= this.value; i++) {
+                    var nameLabel = document.createElement("label");
+                    nameLabel.textContent = "Ticket Holder " + i + " Name:";
+                    ticketFields.appendChild(nameLabel);
+
+                    var nameInput = document.createElement("input");
+                    nameInput.type = "text";
+                    nameInput.id = "ticketName" + i;
+                    nameInput.name = "ticketName" + i;
+                    nameInput.placeholder = "Enter ticket holder " + i + "'s name";
+                    ticketFields.appendChild(nameInput);
+
+                    var emailLabel = document.createElement("label");
+                    emailLabel.textContent = "Ticket Holder " + i + " Email:";
+                    ticketFields.appendChild(emailLabel);
+
+                    var emailInput = document.createElement("input");
+                    emailInput.type = "email";
+                    emailInput.id = "ticketEmail" + i;
+                    emailInput.name = "ticketEmail" + i;
+                    emailInput.placeholder = "Enter ticket holder " + i + "'s email";
+                    ticketFields.appendChild(emailInput);
+                }
+            } else {
+                ticketDetails.style.display = "none";
+            }
+        });
+
+        function submitForm() {
+            // Validate main email address
+            var mainEmail = document.getElementById("email").value;
+            if (!isValidEmail(mainEmail)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Validate email addresses for ticket holders
+            var emailInputs = document.querySelectorAll('[id^="ticketEmail"]');
+            for (var i = 0; i < emailInputs.length; i++) {
+                if (!isValidEmail(emailInputs[i].value)) {
+                    alert("Please enter a valid email address for Ticket Holder " + (i + 1));
+                    return;
+                }
+            }
+
+            alert("Form submitted!");
+        }
+
+        function isValidEmail(email) {
+            // Simple email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+
+</html>

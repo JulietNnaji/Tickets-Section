@@ -106,30 +106,41 @@
             <h2>Platinum Table</h2>
             <p>Platinum table for ten (10) people with a great view</p>
             <p>N3,000,000.00</p>
-            <button class="get-tickets-btn">GET TICKETS</button>
+            <button class="get-tickets-btn" onclick="storeTicketInfo('Platinum', 'Platinum table for ten (10) people with a great view', 3000000)">GET TICKETS</button>
         </div>
 
         <div class="ticket gold-ticket">
             <h2>Gold Table</h2>
             <p>Gold table for ten (10) people with a great view</p>
             <p>N2,000,000.00</p>
-            <button class="get-tickets-btn">GET TICKETS</button>
+            <button class="get-tickets-btn" onclick="storeTicketInfo('Gold', 'Gold table for ten (10) people with a great view', 2000000)">GET TICKETS</button>
         </div>
 
-        <div class="ticket vip-ticket">
+        <div class="ticket vip-ticket" id="vipTicket">
             <h2>VIP Ticket</h2>
             <p>VIP ticket for individuals with a great view</p>
             <p>N30,000</p>
-            <button class="get-tickets-btn vip-ticket-btn"><a href="registeration.html" class="vip-ticket-btn">GET TICKETS</a></button>
+            <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 'VIP ticket for individuals with a great view', 30000)">GET TICKETS</button>
         </div>
 
-        <div class="ticket regular-ticket">
+        <div class="ticket regular-ticket" id="regularTicket">
             <h2>Regular Ticket</h2>
             <p>Regular ticket for individuals with a great view</p>
             <p>N10,000.00</p>
-            <button class="get-tickets-btn regular-ticket-btn"><a href="registeration.html" class="regular-ticket-btn">GET TICKETS</a></button>
+            <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 'Regular ticket for individuals with a great view', 10000)">GET TICKETS</button>
         </div>
     </section>
 
+    <script>
+        function storeTicketInfo(ticketType, ticketDescription, ticketPrice) {
+            // Store ticket information in local storage
+            localStorage.setItem('ticketType', ticketType);
+            localStorage.setItem('ticketDescription', ticketDescription);
+            localStorage.setItem('ticketPrice', ticketPrice);
+
+            // Redirect to the registration page
+            window.location.href = 'registration.html';
+        }
+    </script>
 </body>
 </html>

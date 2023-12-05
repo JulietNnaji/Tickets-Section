@@ -41,18 +41,21 @@
         input,
         select {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 6px;
+            margin-bottom: 10px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
-
-        input:focus {
-            border-color: #007bff;
-        }
-
+        input:focus,select:focus {
+    border-color: #007bff;
+    transform: scale(1.05); /* Add a slight scale effect on focus */
+}
+input:hover,
+select:hover {
+    border-color: #0056b3;
+}
         button {
             background-color: #007bff;
             color: #fff;
@@ -65,13 +68,21 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        #ticketDetails {
+            display: none;
+        }
+
+        #totalPrice {
+            color: black;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <h1>Registration Form</h1>
+        <h1 id="formTitle">Registration Form</h1>
         <hr>
 
         <label for="name">Name:</label>
@@ -93,15 +104,32 @@
         </select>
 
         <!-- Additional fields for multiple tickets -->
-        <div id="ticketDetails" style="display: none;">
+        <div id="ticketDetails">
             <label>Ticket Holder Details:</label>
             <div id="ticketFields"></div>
         </div>
+
+        <!-- Additional field for displaying the total price -->
+        <label>Total Price:</label>
+        <div id="totalPrice">N/A</div>
 
         <button type="button" onclick="submitForm()">Submit</button>
     </div>
 
     <script>
+        // Initialize the form title and total price on page load
+        document.getElementById("formTitle").innerText = localStorage.getItem('ticketType') + ' Ticket Registration Form';
+        document.getElementById("totalPrice").innerText = 'N' + localStorage.getItem('ticketPrice');
+
+        // Dynamically set the form title based on the ticket type
+        function setTicketInfo(type, price) {
+            localStorage.setItem('ticketType', type);
+            localStorage.setItem('ticketPrice', price);
+            document.getElementById("formTitle").innerText = type + ' Ticket Registration Form';
+            document.getElementById("totalPrice").innerText = 'N' + price;
+            window.location.href = "registration.html";
+        }
+
         document.getElementById("tickets").addEventListener("change", function () {
             var ticketDetails = document.getElementById("ticketDetails");
             var ticketFields = document.getElementById("ticketFields");
@@ -135,32 +163,45 @@
             } else {
                 ticketDetails.style.display = "none";
             }
+
+            // Update the total price
+            updateTotalPrice();
         });
 
-        function submitForm() {
-            // Validate main email address
-            var mainEmail = document.getElementById("email").value;
-            if (!isValidEmail(mainEmail)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
+        function updateTotalPrice() {
+            var numberOfTickets = document.getElementById("tickets").value;
+            var ticketPrice = localStorage.getItem('ticketPrice');
 
-            // Validate email addresses for ticket holders
-            var emailInputs = document.querySelectorAll('[id^="ticketEmail"]');
-            for (var i = 0; i < emailInputs.length; i++) {
-                if (!isValidEmail(emailInputs[i].value)) {
-                    alert("Please enter a valid email address for Ticket Holder " + (i + 1));
-                    return;
+            // Calculate the total price
+            var totalPrice = numberOfTickets * ticketPrice;
+
+            // Display the total price
+            document.getElementById("totalPrice").innerText = 'N' + totalPrice.toFixed(2);
+        }
+
+        function submitForm() {
+            var ticketType = localStorage.getItem('ticketType');
+
+            // Logic for form submission
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var numberOfTickets = document.getElementById("tickets").value;
+
+            // Additional logic for ticket holder details
+            if (numberOfTickets > 1) {
+                for (var i = 1; i <= numberOfTickets; i++) {
+                    var ticketHolderName = document.getElementById("ticketName" + i).value;
+                    var ticketHolderEmail = document.getElementById("ticketEmail" + i).value;
+
+                    // Included ticket holder details in the submission logic
+                    console.log("Ticket Holder " + i + " Name: " + ticketHolderName);
+                    console.log("Ticket Holder " + i + " Email: " + ticketHolderEmail);
                 }
             }
 
-            alert("Form submitted!");
-        }
-
-        function isValidEmail(email) {
-            // Simple email validation
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
+            // Display an alert with the form data (this can be replaced with a server submission logic)
+            alert("Form submitted!\nName: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nNumber of Tickets: " + numberOfTickets);
         }
     </script>
 </body>

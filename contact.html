@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #B08D57;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info span {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: #555;
+            margin: 0;
+        }
+
+        .animation-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+
+        <div class="animation-container"></div>
+        <div class="contact-info animated">
+            <span>📞</span>
+            <p>Phone: +1 123-456-7890</p>
+        </div>
+
+        <div class="contact-info animated">
+            <span>✉️</span>
+            <p>Email: info@example.com</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -8,7 +8,7 @@
     <style>
         @font-face {
     font-family: 'GRASSEVENT', 'Courier New', monospace;
-  src: url('path/to/fonts/GRASSEVENT.ttf') format('truetype');
+    src: url('C:\\Users\\Downloads\\grassevent\\GRASSEVENT.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,31 +26,31 @@
             text-align: center;
         }
 
-        h1 {
-               font-size: 25px; font-family: 'GRASSEVENT', 'Courier New', monospace;
+        h1 { 
+               font-family: 'GRASSEVENT', 'Courier New', monospace;
             color: #333;
             margin-bottom: 20px;
             font-size: 36px;
         }
 
-        .contact-info {
-            display: flex;
+        .contact-info { 
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
-
         .contact-info span {
             width: 30px;
             height: 30px;
             margin-right: 10px;
         }
 
-        .contact-info p {
+        .contact-info p,  .contact-info span {
             font-size: 18px;
             color: #555;
             margin: 0;
         }
-
+        .contact-info p{
+            margin-top: 20px;
+        }
         .animation-container {
             display: flex;
             justify-content: center;
@@ -79,17 +79,18 @@
 <body>
 
     <div class="container">
-        <h1>Contact Us</h1>
+        <h1 style="font-size: 50px;">Contact Us</h1>
 
         <div class="animation-container"></div>
         <div class="contact-info animated">
-            <span>📞</span>
-            <p>Phone: +1 123-456-7890</p>
+            <span style="font-size: 35px;">📞 Phone:</span>
+            <p>+234 806-711-0771</p>
         </div>
-
         <div class="contact-info animated">
-            <span>✉️</span>
-            <p>Email: info@example.com</p>
+            <p>Or</p>
+        </div>
+        <div class="contact-info animated">
+            <p>+234 704-912-1222</p>
         </div>
     </div>
 

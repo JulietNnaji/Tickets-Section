@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Roboto:900|Russo+One');
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+    color: #fff;
+    text-align: center;
+    font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';     
+    font-size:30px;
+
+}
+
+.thank-you-container h1{
+    font-size: 100px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-family: "ubuntu";
+    text-align:center;
+    background: linear-gradient(
+        135deg, #ff00d2, #fed90f, #00a2ff,
+        #ff00d2, #09f1b8, #ff00d2, #fed90f,
+        #00a2ff, #ff00d2, #09f1b8
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradient 8s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

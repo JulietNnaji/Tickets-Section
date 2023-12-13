@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #271e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
+            font-size: 25px;
+            text-align: center;
+            color: #B08D57;
+        }
+
+        hr {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #B08D57;
+            ;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #007bff;
+            transform: scale(1.05);
+            /* Add a slight scale effect on focus */
+        }
+
+        input:hover,
+        select:hover {
+            border-color: #B08D57;
+            ;
+        }
+
+        button:hover {
+            background-color: #B08D57;
+            ;
+        }
+
+        #ticketDetails {
+            display: none;
+        }
+
+        #totalPrice {
+            color: #B08D57;
+            ;
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="">
+            <h1 id="formTitle">Registration Form</h1>
+            <hr>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address">
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+            <label for="tickets">Number of Tickets:</label>
+            <select id="tickets" name="tickets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <!-- Additional field for displaying the total price -->
+            <label>Total Price:</label>
+            <div id="totalPrice">N/A</div>
+
+            <!-- Additional fields for multiple tickets -->
+            <div id="ticketDetails">
+                <label>Ticket Holder Details:</label>
+                <div id="ticketFields"></div>
+            </div>
+
+            <!-- <button type="button" onclick="submitForm()">Submit</button> -->
+            <button type="submit" class="submit-form-button" name="submit-form-button" id="submit-form-button"
+                onclick="submitForm()">
+                <span class="btn-text">Submit</span>
+            </button>
+        </form>
+
+    </div>
+
+    <div class="loader"></div>
+
+    <script>
+    </script>
+    <script src="scripts.js"></script>
+    <script src="utils.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>

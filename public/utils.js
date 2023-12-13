@@ -20,7 +20,7 @@ async function payWithPaystack(
     console.log(totalPrice)
 
     var handler = PaystackPop.setup({
-        key: 'pk_test_3fd484332d77673781bde81a6b614928e662fe89',
+        key: 'pk_live_7483381088d7bd084d03c004e31031c337af2f51',
         email: ownerEmail,
         amount: totalPrice * 100,
         currency: 'NGN',

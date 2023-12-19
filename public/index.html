@@ -38,7 +38,8 @@
             border: 1px solid #ddd;
             padding: 40px 20px;
             margin: 10px;
-            width: calc(50% - 20px); /* Two sections in a row with 20px margin in between */
+            height: 300px;
+            width: calc(45% - 20px); /* Two sections in a row with 20px margin in between */
             text-align: right;
             box-sizing: border-box;
             background-size: 400% 400%;
@@ -55,23 +56,32 @@
         }
 
         .vip-ticket {
-            background: linear-gradient(45deg, #cb63dd, #320d72);
+            background-image: url(VIP.jpg);
+            background-size: cover;
         }
 
         .regular-ticket {
-            background: linear-gradient(45deg, #7dbef3, #025880);
+            background-image: url(Reg.jpg);
+            background-size: cover;
         }
 
         .get-tickets-btn {
-            background-color: #4CAF50;
+            background-color:#190737;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 10px;
+            border-radius: 20px;
             text-align: center;
             display: inline-block;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
+            font-size: 14px;
+            margin-top: 29px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
             border: none;
+        }
+        .get-tickets-btn:hover{
+            background: #D23A8D;
+            cursor: pointer;
         }
         .platinum-ticket-link, .gold-ticket-link{
             text-decoration: none;
@@ -118,16 +128,16 @@
         </div>
 
         <div class="ticket vip-ticket" id="vipTicket">
-            <h2>VIP Ticket</h2>
-            <p>VIP ticket for individuals with a great view</p>
-            <p>N70,000</p>
+            <h2 style="opacity: 0;">VIP Ticket</h2>
+            <p style="opacity: 0;">VIP ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N70,000</p>
             <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 'VIP ticket for individuals with a great view', 70000)">GET TICKETS</button>
         </div>
 
         <div class="ticket regular-ticket" id="regularTicket">
-            <h2>Regular Ticket</h2>
-            <p>Regular ticket for individuals with a great view</p>
-            <p>N40,000.00</p>
+            <h2 style="opacity: 0;">Regular Ticket</h2>
+            <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N40,000.00</p>
             <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 'Regular ticket for individuals with a great view', 40000)">GET TICKETS</button>
         </div>
     </section>

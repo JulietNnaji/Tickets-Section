@@ -1,54 +1,8 @@
 const dev = 'http://localhost:5000'
 const render = 'https://warri-again.onrender.com'
-const baseUrl = render
+const baseUrl = dev
 
-async function payWithPaystack(
-    emails,
-    ticketName,
-    totalPrice,
-    ticketCount,
-    ownerName,
-    ownerPhone,
-    ownerEmail,
-) {
-
-    let submitFormButton = document.getElementById("submit-form-button");
-
-    const ref = `${generateRef()}_wa23_${generateRef()}`
-
-    console.log(ref)
-    console.log(totalPrice)
-
-    var handler = PaystackPop.setup({
-        key: 'pk_live_7483381088d7bd084d03c004e31031c337af2f51',
-        email: ownerEmail,
-        amount: totalPrice * 100,
-        currency: 'NGN',
-        ref,
-        callback: function (response) {
-            //this happens after the payment is completed successfully
-            var reference = response.reference;
-            buyTicket(
-                emails,
-                ticketName,
-                totalPrice,
-                ticketCount,
-                ownerName,
-                ownerPhone,
-                ownerEmail,
-                paystackRef = reference,
-            )
-        },
-        onClose: function () {
-            submitFormButton.classList.remove("button--loading");
-            submitFormButton.disabled = false;
-            alert('Transaction was not completed, window closed.');
-        },
-    });
-    handler.openIframe();
-}
-
-async function buyTicket(
+async function initTickets(
     emails,
     ticketName,
     pricePayed,
@@ -56,11 +10,11 @@ async function buyTicket(
     ownerName,
     ownerPhone,
     ownerEmail,
-    paystackRef
 ) {
-
+    var ref = `${generateRef()}_ub24_${generateRef()}`
     let submitFormButton = document.getElementById("submit-form-button");
 
+    console.log('Initializing tickets');
     axios({
         method: "post",
         url: `${baseUrl}/api/v1/ticket/`,
@@ -72,8 +26,71 @@ async function buyTicket(
             ownerName,
             ownerPhone,
             ownerEmail,
-            paystackRef,
+            paystackRef: ref,
         },
+    }).then(function (data) {
+        const msg = data.data.msg
+        console.log(msg);
+
+        console.log('Going to paystack');
+        payWithPaystack(
+            ref,
+            pricePayed,
+            ownerEmail,
+        );
+
+    }).catch(function (err) {
+        console.log('Got stuck herer')
+        if (err.response.data.msg) {
+            alert(err.response.data.msg);
+        } else {
+            alert(err);
+        }
+        submitFormButton.classList.remove("button--loading");
+        submitFormButton.disabled = false;
+    });
+}
+
+async function payWithPaystack(
+    ref,
+    totalPrice,
+    ownerEmail,
+) {
+
+    let submitFormButton = document.getElementById("submit-form-button");
+
+    console.log(ref)
+    console.log(totalPrice)
+
+    var handler = PaystackPop.setup({
+        key: 'pk_test_3fd484332d77673781bde81a6b614928e662fe89',
+        email: ownerEmail,
+        amount: totalPrice * 100,
+        currency: 'NGN',
+        ref,
+        callback: function (response) {
+            //this happens after the payment is completed successfully
+            var reference = response.reference;
+            updateTickets(reference);
+        },
+        onClose: function () {
+            submitFormButton.classList.remove("button--loading");
+            submitFormButton.disabled = false;
+            alert('Transaction was not completed, window closed.');
+        },
+    });
+    handler.openIframe();
+}
+
+async function updateTickets(
+    paystackRef
+) {
+
+    let submitFormButton = document.getElementById("submit-form-button");
+
+    axios({
+        method: "patch",
+        url: `${baseUrl}/api/v1/ticket/${paystackRef}`,
     }).then(function (data) {
         const msg = data.data.msg
         console.log(msg);

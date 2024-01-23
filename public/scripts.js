@@ -1,9 +1,6 @@
 window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
     loader.classList.add("loader-hidden");
-    loader.addEventListener("transitionend", () => {
-        document.body.removeChild("loader");
-    })
 
     // Initialize the form title and total price on page load
     document.getElementById("formTitle").innerText = localStorage.getItem('ticketType') + ' Ticket Registration Form';
@@ -105,35 +102,37 @@ function submitForm() {
         alert('Invalid email');
     } else if (numberOfTickets > 1) {
 
+        console.log('Multiple');
         console.log(typeof (emails.length), emails.length);
         console.log(typeof (numberOfTicketsInt), numberOfTicketsInt);
 
         if (emails.length === numberOfTicketsInt) {
             submitFormButton.disabled = true;
             submitFormButton.classList.add("button--loading");
-            payWithPaystack(
+            initTickets(
                 emails,
-                ticketName = ticketType,
+                ticketType,
                 totalPrice,
-                ticketCount = numberOfTickets,
-                ownerName = name,
-                ownerPhone = phone,
-                ownerEmail = email,
+                numberOfTickets,
+                name,
+                phone,
+                email,
             );
         } else {
             alert('Please fill in ticket holders details');
         }
     } else {
+        console.log('Single');
         submitFormButton.disabled = true;
         submitFormButton.classList.add("button--loading");
-        payWithPaystack(
+        initTickets(
             emails,
-            ticketName = ticketType,
+            ticketType,
             totalPrice,
-            ticketCount = numberOfTickets,
-            ownerName = name,
-            ownerPhone = phone,
-            ownerEmail = email,
+            numberOfTickets,
+            name,
+            phone,
+            email,
         );
     }
 

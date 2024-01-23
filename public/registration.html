@@ -9,8 +9,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap"
         rel="stylesheet">
+
+
     <link rel="stylesheet" href="style.css">
-    <title>Registration Form</title>
+    <title>Event Registration</title>
     <style>
         body {
             font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
@@ -22,7 +24,7 @@
         .container {
             max-width: 400px;
             margin: 50px auto;
-            background-color: #271e1e;
+            background-color: #551103;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -32,7 +34,7 @@
             font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
             font-size: 25px;
             text-align: center;
-            color: #B08D57;
+            color: #F5DB51;
         }
 
         hr {
@@ -43,7 +45,7 @@
         label {
             display: block;
             margin: 15px 0 5px;
-            color: #B08D57;
+            color: #F5DB51;
             ;
         }
 
@@ -71,6 +73,19 @@
             ;
         }
 
+        button {
+            background-color: #BC2303;
+            color: #F5DB51;
+            padding: 10px 140px 10px 140px;
+            border-radius: 2px;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
         button:hover {
             background-color: #B08D57;
             ;
@@ -81,8 +96,7 @@
         }
 
         #totalPrice {
-            color: #B08D57;
-            ;
+            color: #F5DB51;
         }
 
         @media only screen and (max-width: 600px) {
@@ -93,8 +107,7 @@
     </style>
 </head>
 
-<body>
-
+<body id="parent">
     <div class="container">
         <form action="">
             <h1 id="formTitle">Registration Form</h1>
@@ -124,7 +137,7 @@
 
             <!-- Additional fields for multiple tickets -->
             <div id="ticketDetails">
-                <label>Ticket Holder Details:</label>
+                <!-- <label>Ticket Holder Details:</label> -->
                 <div id="ticketFields"></div>
             </div>
 
@@ -134,13 +147,10 @@
                 <span class="btn-text">Submit</span>
             </button>
         </form>
-
     </div>
 
-    <div class="loader"></div>
+    <div class="loader" id="loader"></div>
 
-    <script>
-    </script>
     <script src="scripts.js"></script>
     <script src="utils.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>

@@ -3,160 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
-    <title>Events Website</title>
-    <style>
-        body {
-            font-family: 'Lobster Two', 'Lobster', 'Deftone Stylus', 'Fontleroy Brown', 'Grand Hotel', 'FF Jackie Block', 'Mission Script', 'Pacifico', 'Playball', 'Retroactive', 'Sofia';
-            font-size: 18px;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .ticket-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            padding: 15px; 
-            text-align: right;
-            background: linear-gradient(45deg, #222, #444);
-            border-radius: 5px;
-        }
-
-        .ticket {
-            border: 1px solid #ddd;
-            padding: 40px 20px;
-            margin: 10px;
-            height: 300px;
-            width: calc(45% - 20px); /* Two sections in a row with 20px margin in between */
-            text-align: right;
-            box-sizing: border-box;
-            background-size: 400% 400%;
-            animation: gradientAnimation 5s ease infinite;
-            border-radius: 5px;
-        }
-
-        .platinum-ticket {
-            background: linear-gradient(45deg, #706b6b, #ffffff);
-        }
-
-        .gold-ticket {
-            background: linear-gradient(45deg, #B89800, #ffd300, #ffcc00);
-        }
-
-        .vip-ticket {
-            background-image: url(VIP.jpg);
-            background-size: cover;
-        }
-
-        .regular-ticket {
-            background-image: url(Reg.jpg);
-            background-size: cover;
-        }
-
-        .get-tickets-btn {
-            background-color:#190737;
-            color: white;
-            padding: 10px 10px;
-            border-radius: 20px;
-            text-align: center;
-            display: inline-block;
-            font-size: 14px;
-            margin-top: 29px;
-            margin-bottom: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
-            border: none;
-        }
-        .get-tickets-btn:hover{
-            background: #D23A8D;
-            cursor: pointer;
-        }
-        .platinum-ticket-link, .gold-ticket-link{
-            text-decoration: none;
-            color: white;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-            /* Media query for responsive layout */
-            @media only screen and (max-width: 768px) {
-            .ticket {
-                width: calc(100% - 20px); /* One section in a row on smaller screens */
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,300&family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/style.css">
+    <title>USHBEBE TICKETING WEBSITE</title>
 </head>
 <body>
-
-    <header>
-        <h1>Warri Again 2023</h1>
-    </header>
-
-    <section class="ticket-section">
-        <div class="ticket platinum-ticket">
-            <h2>Platinum Table</h2>
-            <p>Platinum table for ten (10) people with a great view</p>
-            <button class="get-tickets-btn"><a href="contact.html" class="platinum-ticket-link">GET TICKETS</a></button>
+    <div class="header">
+        <img src="../assets/first-image.jpg" alt="Event Image" id="eventImage">
+        <div class="animated-border" id="borderAnimation">
+            <h1 class="animated-text">Get Your Ticket Now! Get Your Ticket Now!! Get Your Ticket Now!!!</h1>
         </div>
-
-        <div class="ticket gold-ticket">
-            <h2>Gold Table</h2>
-            <p>Gold table for ten (10) people with a great view</p>
-            <button class="get-tickets-btn"><a href="contact.html" class="gold-ticket-link">GET TICKETS</a></button>
+    </div>
+    
+    <section class="ticket-section">
+        <div class="ticket regular-ticket" id="regularTicket">
+            <h2 style="opacity: 0;">Regular Ticket</h2>
+            <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N10,000.00</p>
+            <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 10000)">GET TICKETS</button>
         </div>
 
         <div class="ticket vip-ticket" id="vipTicket">
             <h2 style="opacity: 0;">VIP Ticket</h2>
             <p style="opacity: 0;">VIP ticket for individuals with a great view</p>
-            <p style="opacity: 0;">N70,000</p>
-            <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 'VIP ticket for individuals with a great view', 70000)">GET TICKETS</button>
+            <p style="opacity: 0;">N30,000</p>
+            <button class="get-tickets-btn vip-ticket-btn" onclick="storeTicketInfo('VIP', 30000)">GET TICKETS</button>
         </div>
 
-        <div class="ticket regular-ticket" id="regularTicket">
-            <h2 style="opacity: 0;">Regular Ticket</h2>
-            <p style="opacity: 0;">Regular ticket for individuals with a great view</p>
-            <p style="opacity: 0;">N40,000.00</p>
-            <button class="get-tickets-btn regular-ticket-btn" onclick="storeTicketInfo('Regular', 'Regular ticket for individuals with a great view', 40000)">GET TICKETS</button>
+        <div class="ticket comfort-ticket">
+            <h2 style="opacity: 0;">Platinum Comfort Ticket</h2>
+            <p style="opacity: 0;">Platinum Comfort ticket for individuals with a great view</p>
+            <p style="opacity: 0;">N2,000,000.00</p>
+            <button class="get-tickets-btn"><a href="contact.html" class="comfort-ticket-link">GET TICKETS</a></button>
+        </div>
+
+        <div class="ticket platinum-ticket">
+            <h2 style="opacity: 0;">Platinum Luxury Ticket</h2>
+            <p style="opacity: 0;">Platinum Luxury for individuals with a great view</p>
+            <p style="opacity: 0;">N3,000,000.00</p>
+            <button class="get-tickets-btn"><a href="contact.html" class="platinum-ticket-link">GET TICKETS</a></button>
         </div>
     </section>
 
     <script>
-        function storeTicketInfo(ticketType, ticketDescription, ticketPrice) {
-            // Store ticket information in local storage
+        function storeTicketInfo(ticketType, ticketPrice) {
             localStorage.setItem('ticketType', ticketType);
-            localStorage.setItem('ticketDescription', ticketDescription);
             localStorage.setItem('ticketPrice', ticketPrice);
-
-            // Redirect to the registration page
             window.location.href = 'registration.html';
         }
     </script>
 
-    <script src="scripts.js"></script>
-    <script src="utils.js"></script>
+    <script src="../public/scripts.js"></script>
+    <script src="../public/utils.js"></script>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

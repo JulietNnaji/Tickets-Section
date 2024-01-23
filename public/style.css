@@ -73,22 +73,22 @@ body {
 }
 
 .platinum-ticket {
-  background-image: url(../assets/fifth-image.jpg);
+  background-image: url(https://res.cloudinary.com/ddqpbqrqd/image/upload/v1706014628/fifth-image_fcw2ra.jpg);
   background-size: cover;
 }
 
 .comfort-ticket {
-  background-image: url(../assets/fourth-image.jpg);
+  background-image: url(https://res.cloudinary.com/ddqpbqrqd/image/upload/v1706014629/fourth-image_c5amk4.jpg);
   background-size: cover;
 }
 
 .vip-ticket {
-  background-image: url(../assets/third-image.jpg);
+  background-image: url(https://res.cloudinary.com/ddqpbqrqd/image/upload/v1706014628/third-image_enwgqv.jpg);
   background-size: cover;
 }
 
 .regular-ticket {
-  background-image: url(../assets/second-image.jpg);
+  background-image: url(https://res.cloudinary.com/ddqpbqrqd/image/upload/v1706014631/second-image_koyzeo.jpg);
   background-size: cover;
 }
 
@@ -160,7 +160,6 @@ body {
   align-items: center;
   background-color: #000;
   transition: opacity 0.75s, visibility 0.75s;
-
 }
 
 .loader-hidden {
@@ -173,14 +172,14 @@ body {
   width: 75px;
   height: 75px;
   border: 15px solid #dddddd;
-  border-top-color: #B08D57;
+  border-top-color: #b08d57;
   border-radius: 50%;
   animation: loading 0.75s ease infinite;
 }
 
 @keyframes loading {
   from {
-    transform: rotate(0turn)
+    transform: rotate(0turn);
   }
   to {
     transform: rotate(1turn);

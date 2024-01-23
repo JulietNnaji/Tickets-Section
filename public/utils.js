@@ -1,6 +1,6 @@
 const dev = 'http://localhost:5000'
-const render = 'https://warri-again.onrender.com'
-const baseUrl = dev
+const render = 'https://chronicles-of-ushebebe.onrender.com'
+const baseUrl = render
 
 async function initTickets(
     emails,
